@@ -235,37 +235,33 @@ end
 - Your goal is to plan your API endpoints, document them, and then develop them with Rails using token authorization.
 - A good idea is to write your request specs before creating the endpoints, and then test them with Postman.
 - For this lab, use [Devise](https://github.com/plataformatec/devise) for authentication.
-- Since you will be implementing login and signup with Devise through AJAX, a small tweak must be performed to get Devise to work with AJAX requests:
+- Since you will be implementing login and signup with Devise through AJAX, a small tweak must be performed to get Devise to work with AJAX requests.
+- First, generate the devise controllers as per the documentation:
 
-##### controllers/sessions_controller.rb
+```
+rails generate devise:controllers [scope]
+```
+
+- We will then tell Devise to respond to JSON:
+
+##### controllers/users/sessions_controller.rb
 
 ```ruby
-class SessionsController < Devise::SessionsController  
+class Users::SessionsController < Devise::SessionsController
 	respond_to :json
 end
 ```
 
-##### controller/registrations_controller.rb
+##### controllers/users/registrations_controller.rb
 
 ```ruby
-class RegistrationsController < Devise::RegistrationsController
+class Users::RegistrationsController < Devise::RegistrationsController
 	respond_to :json
-
-private
-
-    def sign_up_params
-        params.require(:user).permit(:firstname, :lastname, :email, :password, :password_confirmation, :username)
-    end
-
-    def account_update_params
-        params.require(:user).permit(:firstname, :lastname, :email, :password, :password_confirmation, :current_password, :username)
-    end
-
 end
 ```
 
 ##### config/routes.rb
 
 ```ruby
-devise_for :users, :controllers => { registrations: "registrations", sessions: "sessions" }
+devise_for :users, :controllers => { registrations: "users/registrations", sessions: "users/sessions" }
 ```
