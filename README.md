@@ -227,41 +227,6 @@ describe "Testing Users API" do
 end
 ```
 
-## Build an API Lab
+## Chirp! on Rails Lab
 
-- In this lab we will be taking a front end that is already developed, and build an API to power it using Rails.
-- You will be working on the [Chirp! application located here](https://profstream.com/projects/26).
-- The app front end only has two views - index and edit. You will have to add two views - signup and login.
-- Your goal is to plan your API endpoints, document them, and then develop them with Rails using token authorization.
-- A good idea is to write your request specs before creating the endpoints, and then test them with Postman.
-- For this lab, use [Devise](https://github.com/plataformatec/devise) for authentication.
-- Since you will be implementing login and signup with Devise through AJAX, a small tweak must be performed to get Devise to work with AJAX requests.
-- First, generate the devise controllers as per the documentation:
-
-```
-rails generate devise:controllers [scope]
-```
-
-- We will then tell Devise to respond to JSON:
-
-##### controllers/users/sessions_controller.rb
-
-```ruby
-class Users::SessionsController < Devise::SessionsController
-	respond_to :json
-end
-```
-
-##### controllers/users/registrations_controller.rb
-
-```ruby
-class Users::RegistrationsController < Devise::RegistrationsController
-	respond_to :json
-end
-```
-
-##### config/routes.rb
-
-```ruby
-devise_for :users, :controllers => { registrations: "users/registrations", sessions: "users/sessions" }
-```
+- [Lab can be found here]()
