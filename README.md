@@ -229,4 +229,4 @@ end
 
 ## Chirp! on Rails Lab
 
-- [Lab can be found here]()
+- [Lab can be found here](https://github.com/sf-wdi-gaia/chirp-on-rails)
