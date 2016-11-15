@@ -6,6 +6,30 @@
 - API design usually consists of mapping RESTful routes to specific actions for your users to take.
 - A standard pen and paper will usually do, but there are tools out there to help you with this process. A popular one is [Apiary](https://apiary.io/).
 
+## User Manager App
+
+- We will be building an app using Angular with our Rails endpoints.
+- You can find [the starter code here](https://github.com/sf-wdi-gaia/user-manager).
+
+## Writing Tests for API Endpoints
+
+- Testing API endpoints is made easy by RSpec.
+- After following the [installation instructions for RSpec](https://github.com/rspec/rspec-rails) you will simply add a folder to /spec called "requests".
+- Any specs that you place into this folder will have access to RSpec's built-in HTTP request methods.
+- Let's take an example:
+
+spec/requests/users_spec.rb
+
+```ruby
+describe "Testing Users API" do
+	it "Should return a 200 status code" do
+		get "/api/users"
+		
+		expect(response).to have_http_status(200)
+	end
+end
+```
+
 ## Implementing Functionality as an API
 
 - Instead of the traditional intercept a request, issue a response in HTML, CSS and JS, the flow of API is more basic.
@@ -204,25 +228,6 @@ class UsersController < ApplicationController
 		else
 			head 400
 		end
-	end
-end
-```
-
-## Writing Tests for API Endpoints
-
-- Testing API endpoints is made easy by RSpec.
-- After following the [installation instructions for RSpec](https://github.com/rspec/rspec-rails) you will simply add a folder to /spec called "requests".
-- Any specs that you place into this folder will have access to RSpec's built-in HTTP request methods.
-- Let's take an example:
-
-spec/requests/users_spec.rb
-
-```ruby
-describe "Testing Users API" do
-	it "Should return a 200 status code" do
-		get "/api/users"
-		
-		expect(response).to have_http_status(200)
 	end
 end
 ```
